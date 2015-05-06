@@ -11,27 +11,15 @@ module.exports = React.createClass({
 
     return (
       <footer id="footer">
-					<span id="todo-count">
-						<strong>{itemsLeft}</strong> {itemsLeft === 1 ? 'item' : 'items'} left
-					</span>
+        <span id="todo-count">
+          <strong>{itemsLeft}</strong> {itemsLeft === 1 ? 'item' : 'items'} left
+        </span>
         <ul id="filters">
-          <li>
-            <a className={currentFilter === 'all' ? 'selected' : ''} onClick={R.partial(filter.reset, 'all')}>
-              All
-            </a>
-          </li>
+          {filterBtn({name: 'All', id: 'all'})}
           {' '}
-          <li>
-            <a className={currentFilter === 'active' ? 'selected' : ''} onClick={R.partial(filter.reset, 'active')}>
-              Active
-            </a>
-          </li>
+          {filterBtn({name: 'Active', id: 'active'})}
           {' '}
-          <li>
-            <a className={currentFilter === 'completed' ? 'selected' : ''} onClick={R.partial(filter.reset, 'completed')}>
-              Completed
-            </a>
-          </li>
+          {filterBtn({name: 'Completed', id: 'completed'})}
         </ul>
 
         {this.props.items.length - itemsLeft > 0 ?
@@ -44,5 +32,15 @@ module.exports = React.createClass({
         }
       </footer>
     )
+
+    function filterBtn({name, id}) {
+      return (
+        <li>
+          <a className={currentFilter === id ? 'selected' : ''} onClick={R.partial(filter.reset, id)}>
+            {name}
+          </a>
+        </li>
+      )
+    }
   }
 })
