@@ -45,7 +45,11 @@ module.exports = {
     }
 
     function withDisplayStatus([items, filter]) {
-      return R.map(it => R.merge(it, {display: filter === 'all' || it.status === filter}), items)
+      function setDisplay(it) {
+        const display = filter === 'completed' ? isItemCompleted(it) : filter === 'active' ? !isItemCompleted(it) : true
+        return R.merge(it, {display})
+      }
+      return R.map(setDisplay, items)
     }
   },
 

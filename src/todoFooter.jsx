@@ -1,6 +1,7 @@
-const React = require('react'),
-      R     = require('ramda'),
-      todos = require('./todos')
+const React  = require('react'),
+      R      = require('ramda'),
+      todos  = require('./todos'),
+      filter = require('./filter')
 
 
 module.exports = React.createClass({
@@ -15,19 +16,19 @@ module.exports = React.createClass({
 					</span>
         <ul id="filters">
           <li>
-            <a className={currentFilter === 'all' ? 'selected' : ''}>
+            <a className={currentFilter === 'all' ? 'selected' : ''} onClick={R.partial(filter.reset, 'all')}>
               All
             </a>
           </li>
           {' '}
           <li>
-            <a className={currentFilter === 'active' ? 'selected' : ''}>
+            <a className={currentFilter === 'active' ? 'selected' : ''} onClick={R.partial(filter.reset, 'active')}>
               Active
             </a>
           </li>
           {' '}
           <li>
-            <a className={currentFilter === 'completed' ? 'selected' : ''}>
+            <a className={currentFilter === 'completed' ? 'selected' : ''} onClick={R.partial(filter.reset, 'completed')}>
               Completed
             </a>
           </li>
