@@ -79,7 +79,15 @@ module.exports = {
     return Bacon.combineAsArray([itemsS, filterS])
       .map(withDisplayStatus)
 
-    ... business logic here ...
+    function createItem(items, newItemTitle) {
+      return items.concat([{id: Date.now(), title: newItemTitle, states: []}])
+    }
+
+    function removeItem(items, itemIdToRemove) {
+      return R.reject(it => it.id === itemIdToRemove, items)
+    }
+    
+    ... rest of the business logic here ...
   },
 
   // "public" methods
@@ -91,16 +99,8 @@ module.exports = {
   removeItem: function(itemId) {
     d.push('remove', itemId)
   },
-
-  removeCompleted: function() {
-    d.push('removeCompleted')
-  },
-
-  setTitle: function(itemId, title) {
-    d.push('updateTitle', {itemId, title})
-  },
   
-  ...
+  ... rest of the public interface here ...
 }
 ```
 
