@@ -7,7 +7,7 @@ const React   = require('react'),
 
 
 const filterP = filter.toProperty(window.location.hash.substring(1) || 'all'),
-      itemsP  = todos.toItemsProperty([{id: Date.now(), title: 'foobar', states: []}], filterP)
+      itemsP  = todos.toItemsProperty([], filterP)
 
 const appState = Bacon.combineTemplate({
   items: itemsP,
