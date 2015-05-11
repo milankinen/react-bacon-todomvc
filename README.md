@@ -1,6 +1,6 @@
 # React+Bacon.js TodoMVC
 
-Demonstration about the power and simplicity of React/FRP combo.
+Demonstration of the power and simplicity of React/FRP combo.
 
 ## Motivation
 
