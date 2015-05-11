@@ -33,7 +33,7 @@ stupidly). Nothing more is needed!
 ![Application architecture](doc/diagram.png)
 
 The essential component is the `Dispatcher` which is basically just an object
-of Bacon buses (`Bacon.Bus` is a stream that can have data pushed into it).
+of Bacon buses (`Bacon.Bus` is a stream that can have data pushed into it. Equals Rx's `Subject`).
 
 ```javascript
 const Bacon = require('baconjs')
@@ -102,6 +102,28 @@ module.exports = {
   
   ...
 }
+```
+
+Business logic can be added to state stream easily with `Bacon.combineTemplate`:
+
+```javascript
+const React   = require('react'),
+      Bacon   = require('baconjs'),
+      TodoApp = require('./todoApp'),
+      todos   = require('./todos'),
+      filter  = require('./filter')
+
+const filterP = filter.toProperty(...intial filter state...),
+      itemsP  = todos.toItemsProperty([], filterP)
+
+const appState = Bacon.combineTemplate({
+  items: itemsP,
+  filter: filterP
+})
+
+appState.onValue((state) => {
+  React.render(<TodoApp {...state} />, document.getElementById('todoapp'))
+})
 ```
 
 After that, using your business logic is dead simple:
