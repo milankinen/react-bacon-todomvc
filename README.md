@@ -6,7 +6,10 @@ Demonstration of the power and simplicity of React/FRP combo.
 
     git clone git@github.com:milankinen/react-bacon-todomvc.git
     open react-bacon-todomvc/index.html
-    
+
+## How it works?
+
+TODO
 
 ## License
 
