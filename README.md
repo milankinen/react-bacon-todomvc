@@ -143,7 +143,7 @@ asynchronous: it's up to business logic to decide that.
 Feel free to clone the repository and start playing with the project:
 
 ```bash 
-git clone git@github.com:milankinen/react-bacon-todomvc.git
+git clone https://github.com/milankinen/react-bacon-todomvc.git
 npm install
 npm run watch
 open "$(pwd)/index.html"
