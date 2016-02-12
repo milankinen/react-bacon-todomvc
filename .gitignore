@@ -1,6 +1,11 @@
 .DS_Store
 logs
 *.log
-node_modules
+node_modules/*
 .idea
 #build
+!node_modules/todomvc-common
+!node_modules/todomvc-app-css
+node_modules/**/*.md
+node_modules/**/*.json
+node_modules/**/*.js
